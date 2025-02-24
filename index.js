@@ -33,6 +33,15 @@ async function run() {
 
 
 
+    // ----------------------------------------------    task   apis   ---------------------------------
+
+    // create a task
+    app.post("/tasks", async (req, res) => {
+      const taskInfo = req.body;
+      const result = await taskCollection.insertOne(taskInfo);
+      res.send(result);
+    });
+
 
 
 
