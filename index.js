@@ -42,6 +42,16 @@ async function run() {
       res.send(result);
     });
 
+    // get all tasks by a specific user
+
+    app.get("/tasks", async (req, res) => {
+      const { email } = req.query;
+      const result = await taskCollection
+        .find({ "user.email": email })
+        .toArray();
+      res.send(result);
+    });
+
 
 
 
