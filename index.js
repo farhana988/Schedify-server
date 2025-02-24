@@ -78,6 +78,15 @@ async function run() {
 
 
 
+    // ----------------------------------------------    user   apis   ---------------------------------
+
+    app.post("/user", async (req, res) => {
+      const query = req.body;
+      const result = await userCollection.insertOne(query);
+      res.send(result);
+    });
+
+
 
 
     // Send a ping to confirm a successful connection
