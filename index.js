@@ -52,6 +52,22 @@ async function run() {
       res.send(result);
     });
 
+    // update a task status
+    app.patch("/tasks/:id", async (req, res) => {
+      const { id } = req.params;
+      const { category } = req.body;
+      const result = await taskCollection.updateOne(
+        { _id: new ObjectId(id) },
+        {
+          $set: {
+            category,
+          },
+        }
+      );
+      res.send(result);
+    });
+
+
 
 
 
